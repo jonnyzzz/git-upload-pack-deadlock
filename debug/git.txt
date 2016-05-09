@@ -1,0 +1,39 @@
+Command: git.exe upload-pack .git
+
+Attaching to program `C:\git-sdk-64\mingw64\bin\git.exe', process 2568
+[New Thread 2568.0x13d4]
+[New Thread 2568.0x9cc]
+(gdb) thread apply all bt
+
+Thread 2 (Thread 2568.0x9cc):
+#0  0x00007ff9b57f8861 in ntdll!DbgBreakPoint ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b5819031 in ntdll!DbgUiRemoteBreakin ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#2  0x00007ff9b4aa8102 in KERNEL32!BaseThreadInitThunk ()
+   from C:\WINDOWS\system32\kernel32.dll
+#3  0x00007ff9b57ac5b4 in ntdll!RtlUserThreadStart ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#4  0x0000000000000000 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+Thread 1 (Thread 2568.0x13d4):
+#0  0x00007ff9b57f5154 in ntdll!ZwWaitForSingleObject ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b25aaadf in WaitForSingleObjectEx ()
+   from C:\WINDOWS\system32\KernelBase.dll
+#2  0x00000000005acf94 in waitpid (pid=7908, status=0xb9fb74, options=0)
+    at compat/mingw.c:2406
+#3  0x000000000055b3de in wait_or_whine (pid=7908,
+    argv0=0x2d726a8 "git-upload-pack", in_signal=0) at run-command.c:229
+#4  0x000000000055bc01 in finish_command (cmd=0xb9fc60) at run-command.c:538
+#5  0x000000000055bc96 in run_command (cmd=0xb9fc60) at run-command.c:559
+#6  0x000000000055bdff in run_command_v_opt_cd_env (argv=0x13018e8, opt=40,
+    dir=0x0, env=0x0) at run-command.c:579
+#7  0x000000000055bcc5 in run_command_v_opt (argv=0x13018e8, opt=40)
+    at run-command.c:564
+#8  0x0000000000402bbe in execv_dashed_external (argv=0x13018e8) at git.c:569
+#9  0x0000000000402c58 in run_argv (argcp=0xb9fe30, argv=0xb9fdf8)
+    at git.c:596
+#10 0x0000000000402ea2 in mingw_main (argc=2, av=0x13018e0) at git.c:698
+#11 0x0000000000402d2d in main (argc=3, argv=0x2d70498) at git.c:633

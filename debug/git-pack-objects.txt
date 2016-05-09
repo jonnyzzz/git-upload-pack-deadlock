@@ -1,0 +1,102 @@
+Command: git pack-objects --revs --thin --stdout --progress --delta-base-offset
+
+
+Attaching to program `C:\git-sdk-64\mingw64\libexec\git-core\git.exe', process 4968
+[New Thread 4968.0x1534]
+[New Thread 4968.0x1650]
+[New Thread 4968.0x534]
+(gdb) thread apply all bt
+
+Thread 3 (Thread 4968.0x534):
+#0  0x00007ff9b57f8861 in ntdll!DbgBreakPoint ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b5819031 in ntdll!DbgUiRemoteBreakin ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#2  0x00007ff9b4aa8102 in KERNEL32!BaseThreadInitThunk ()
+   from C:\WINDOWS\system32\kernel32.dll
+#3  0x00007ff9b57ac5b4 in ntdll!RtlUserThreadStart ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#4  0x0000000000000000 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+Thread 2 (Thread 4968.0x1650):
+#0  0x00007ff9b57f5154 in ntdll!ZwWaitForSingleObject ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b25aaadf in WaitForSingleObjectEx ()
+   from C:\WINDOWS\system32\KernelBase.dll
+#2  0x00000000005ac260 in ticktack (dummy=0x0) at compat/mingw.c:2032
+#3  0x00007ff9b481b097 in msvcrt!_beginthreadex ()
+   from C:\WINDOWS\system32\msvcrt.dll
+#4  0x00007ff9b481b16c in msvcrt!_endthreadex ()
+   from C:\WINDOWS\system32\msvcrt.dll
+#5  0x00007ff9b4aa8102 in KERNEL32!BaseThreadInitThunk ()
+   from C:\WINDOWS\system32\kernel32.dll
+#6  0x00007ff9b57ac5b4 in ntdll!RtlUserThreadStart ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#7  0x0000000000000000 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+Thread 1 (Thread 4968.0x1534):
+#0  0x00007ff9b57f51d4 in ntdll!ZwWriteFile ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b25d9986 in WriteFile () from C:\WINDOWS\system32\KernelBase.dll
+#2  0x00007ff9b48001cb in msvcrt!_write () from C:\WINDOWS\system32\msvcrt.dll
+#3  0x00007ff9b47ffaba in msvcrt!_write () from C:\WINDOWS\system32\msvcrt.dll
+#4  0x00000000005a87f7 in mingw_write (fd=2, buf=0x1340a10, len=113)
+    at compat/mingw.c:586
+#5  0x000000000059a186 in xwrite (fd=2, buf=0x1340a10, len=113)
+    at wrapper.c:275
+#6  0x000000000059a2fa in write_in_full (fd=2, buf=0x1340a10, count=113)
+    at wrapper.c:325
+#7  0x000000000059b56b in write_or_whine_pipe (fd=2, buf=0x1340a10,
+    count=113,
+    msg=0x6273a0 <err_msg> "Could not trace into fd given by GIT_TRACE environment variable") at write_or_die.c:88
+#8  0x0000000000580f4e in print_trace_line (key=0x5e7100 <pack_access>,
+    buf=0xb9da40) at trace.c:134
+#9  0x0000000000580ff5 in trace_vprintf_fl (
+    file=0x62515f <cherry_picked_prefix+7391> "sha1_file.c", line=2240,
+    key=0x5e7100 <pack_access>,
+    format=0x625155 <cherry_picked_prefix+7381> "%s %I64u\n",
+    ap=0xb9db00 "\210▒)\001") at trace.c:147
+#10 0x0000000000581318 in trace_printf_key_fl (
+    file=0x62515f <cherry_picked_prefix+7391> "sha1_file.c", line=2240,
+    key=0x5e7100 <pack_access>,
+    format=0x625155 <cherry_picked_prefix+7381> "%s %I64u\n") at trace.c:253
+#11 0x000000000056af45 in write_pack_access_log (p=0x1299d18,
+    obj_offset=592856) at sha1_file.c:2239
+#12 0x000000000056afcf in unpack_entry (p=0x1299d18, obj_offset=592856,
+    final_type=0xb9e488, final_size=0xb9e484) at sha1_file.c:2265
+#13 0x000000000056ac4a in cache_or_unpack_entry (p=0x1299d18,
+    base_offset=592856, base_size=0xb9e484, type=0xb9e488, keep_cache=1)
+    at sha1_file.c:2165
+#14 0x000000000056c3ff in read_packed_sha1 (
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒", type=0xb9e488, size=0xb9e484)
+    at sha1_file.c:2789
+#15 0x000000000056c6a7 in read_object (
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒", type=0xb9e488, size=0xb9e484)
+    at sha1_file.c:2837
+#16 0x000000000056c79b in read_sha1_file_extended (
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒", type=0xb9e488, size=0xb9e484,
+    flag=1) at sha1_file.c:2865
+#17 0x0000000000518a52 in read_sha1_file (
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒", type=0xb9e488, size=0xb9e484)
+    at cache.h:1019
+#18 0x000000000051935a in parse_object (
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒") at object.c:269
+#19 0x0000000000552686 in get_reference (revs=0xb9e780,
+    name=0xb9efa0 "f1863a33a47f0edd6bcde7a88bc4414f5e297a95",
+    sha1=0xb9e6f0 "▒:3▒\177\016▒k▒程▒AO^)z▒", flags=0) at revision.c:196
+#20 0x000000000055582f in handle_revision_arg (
+    arg_=0xb9efa0 "f1863a33a47f0edd6bcde7a88bc4414f5e297a95", revs=0xb9e780,
+    flags=0, revarg_opt=1) at revision.c:1559
+#21 0x0000000000470293 in get_object_list (ac=2, av=0x1299ad8)
+    at builtin/pack-objects.c:2520
+#22 0x000000000047126b in cmd_pack_objects (argc=0, argv=0x13b18e8,
+    prefix=0x0) at builtin/pack-objects.c:2756
+#23 0x0000000000402859 in run_builtin (p=0x5df6d8 <commands+1656>, argc=6,
+    argv=0x13b18e8) at git.c:352
+#24 0x0000000000402aee in handle_builtin (argc=6, argv=0x13b18e8) at git.c:539
+#25 0x0000000000402c49 in run_argv (argcp=0xb9fe30, argv=0xb9fdf8)
+    at git.c:593
+#26 0x0000000000402ea2 in mingw_main (argc=6, av=0x13b18e0) at git.c:698
+#27 0x0000000000402d2d in main (argc=7, argv=0x1290498) at git.c:633

@@ -1,0 +1,5 @@
+git.exe upload-pack .git
+\ 
+ git-upload-pack .git
+  \
+   git pack-objects --revs --thin --stdout --progress --delta-base-offset

@@ -1,0 +1,40 @@
+Command: git-upload-pack .git
+
+Attaching to program `C:\git-sdk-64\mingw64\libexec\git-core\git-upload-pack.exe', process 7908
+[New Thread 7908.0x684]
+[New Thread 7908.0x1080]
+(gdb) thread apply all bt
+
+Thread 2 (Thread 7908.0x1080):
+#0  0x00007ff9b57f8861 in ntdll!DbgBreakPoint ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b5819031 in ntdll!DbgUiRemoteBreakin ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#2  0x00007ff9b4aa8102 in KERNEL32!BaseThreadInitThunk ()
+   from C:\WINDOWS\system32\kernel32.dll
+#3  0x00007ff9b57ac5b4 in ntdll!RtlUserThreadStart ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#4  0x0000000000000000 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+Thread 1 (Thread 7908.0x684):
+#0  0x00007ff9b57f51d4 in ntdll!ZwWriteFile ()
+   from C:\WINDOWS\SYSTEM32\ntdll.dll
+#1  0x00007ff9b25d9986 in WriteFile () from C:\WINDOWS\system32\KernelBase.dll
+#2  0x00007ff9b48001cb in msvcrt!_write () from C:\WINDOWS\system32\msvcrt.dll
+#3  0x00007ff9b47ffaba in msvcrt!_write () from C:\WINDOWS\system32\msvcrt.dll
+#4  0x00007ff9b4826ada in msvcrt!_flsbuf ()
+   from C:\WINDOWS\system32\msvcrt.dll
+#5  0x00007ff9b482cc94 in putc () from C:\WINDOWS\system32\msvcrt.dll
+#6  0x0000000061ccef68 in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#7  0x0000000061ccf0e0 in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#8  0x0000000061cd07dc in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#9  0x0000000061ccecbd in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#10 0x0000000061ccad7e in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#11 0x0000000061ccadad in ?? () from C:\git-sdk-64\mingw64\bin\libintl-8.dll
+#12 0x00000000004019b1 in create_pack_file () at upload-pack.c:129
+#13 0x0000000000403497 in upload_pack () at upload-pack.c:796
+#14 0x00000000004037bd in mingw_main (argc=2, argv=0x13518e0)
+    at upload-pack.c:871
+#15 0x00000000004035f8 in main (argc=2, argv=0x920498) at upload-pack.c:820
+(gdb)
