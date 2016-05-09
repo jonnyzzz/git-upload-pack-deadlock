@@ -1,13 +1,22 @@
 #!/bin/bash
 
-# git upload-pack . <$(echo 0000) >heads
+function request {
+ echo "0067want $(git rev-parse HEAD) thin-pack side-band-64k ofs-delta multi_ack_detailed";
+ 
+ git upload-pack . <<< "0000" | tail -n +2 | head -n -1 | while read i; do
+   if [[ $i != *"^"* ]]; then
+     echo "0032want ${i:4:40}"
+   fi
+ done
+ echo "00000008done"
+}
 
-echo >> wants
-while read i; do
-  l="0032want $(cut -c 5-40 - <<<$i)"
-  echo $l >> wants  
-  echo $l
-done < heads
+
+wants=$(request)
+
+echo "Git upload-pack request:"
+echo "$wants"
 
 
-# cat request | git upload-pack . 
+GIT_TRACE=true GIT_TRACE_PACKET=true GIT_TRACE_PACK_ACCESS=true git upload-pack .git <<<$wants >/dev/null
+
