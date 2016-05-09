@@ -1,3 +1,7 @@
+$ git --version
+git version 2.8.2.windows.1.1.g85fb4ba.dirty
+
+
 git.exe upload-pack .git
 \ 
  git-upload-pack .git
