@@ -17,7 +17,7 @@ My experiments shown it's vital to have tags in the play.
 It reproduces for most fresh git versions.
 
 
-Inverstigation
+Investigation
 ==============
 
 Based on 
